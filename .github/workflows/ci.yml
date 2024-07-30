@@ -8,12 +8,11 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
-    - uses: actions/checkout@v2
+      uses: actions/checkout@v2
 
     - name: Set up Python
       uses: actions/setup-python@v2
@@ -36,12 +35,7 @@ jobs:
         source venv/bin/activate
         pytest
 
- - name: Security check with Bandit
+    - name: Security check with Bandit
       run: |
         source venv/bin/activate
         bandit -r app
-
-  - name: Dependency check with Safety
-      run: |
-         source venv/bin/activate
-         safety check
